@@ -1,0 +1,303 @@
+{
+  "contract_name": "Splitter",
+  "abi": [
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "splitToAddressB",
+      "outputs": [
+        {
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "payable": false,
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "splitToAddressA",
+      "outputs": [
+        {
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "payable": false,
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "owner",
+      "outputs": [
+        {
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "payable": false,
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [],
+      "name": "split",
+      "outputs": [
+        {
+          "name": "splitIndeed",
+          "type": "bool"
+        }
+      ],
+      "payable": true,
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "name": "_splitToAddressA",
+          "type": "address"
+        },
+        {
+          "name": "_splitToAddressB",
+          "type": "address"
+        }
+      ],
+      "payable": false,
+      "type": "constructor"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "name": "_from",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "name": "_toA",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "name": "_toB",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "name": "_value",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "name": "_valueSplit",
+          "type": "uint256"
+        }
+      ],
+      "name": "Split",
+      "type": "event"
+    }
+  ],
+  "unlinked_binary": "0x6060604052341561000f57600080fd5b6040516040806102ac83398101604052808051919060200180519150505b60008054600160a060020a03338116600160a060020a0319928316179092556001805485841690831617905560028054928416929091169190911790555b50505b61022f8061007d6000396000f300606060405263ffffffff60e060020a60003504166338d4ba4981146100455780635c3643d0146100745780638da5cb5b146100a3578063f7654176146100d2575b600080fd5b341561005057600080fd5b6100586100ee565b604051600160a060020a03909116815260200160405180910390f35b341561007f57600080fd5b6100586100fd565b604051600160a060020a03909116815260200160405180910390f35b34156100ae57600080fd5b61005861010c565b604051600160a060020a03909116815260200160405180910390f35b6100da61011b565b604051901515815260200160405180910390f35b600254600160a060020a031681565b600154600160a060020a031681565b600054600160a060020a031681565b60008054819033600160a060020a0390811691161461013957600080fd5b6002345b6001549190049150600160a060020a031681156108fc0282604051600060405180830381858888f19350505050151561017557600080fd5b600254600160a060020a031681156108fc0282604051600060405180830381858888f1935050505015156101a857600080fd5b600254600154600160a060020a03918216919081169033167f42fb8796ffe3237a1f58f3e03a85a890f71c1582e5ef97e78936c4f5b6968cd9348560405191825260208201526040908101905180910390a4600191505b50905600a165627a7a7230582016aa4779bdcfbe86f301c263157e89634750d37218d79922c164809ec6cb55a30029",
+  "networks": {
+    "42": {
+      "events": {
+        "0x42fb8796ffe3237a1f58f3e03a85a890f71c1582e5ef97e78936c4f5b6968cd9": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "name": "_from",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "name": "_toA",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "name": "_toB",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "name": "_value",
+              "type": "uint256"
+            },
+            {
+              "indexed": false,
+              "name": "_valueSplit",
+              "type": "uint256"
+            }
+          ],
+          "name": "Split",
+          "type": "event"
+        }
+      },
+      "links": {},
+      "address": "0x00fccea05f242f2472ae010ecc66d4f2e9ecc7f3",
+      "updated_at": 1509318032367
+    },
+    "1509311423080": {
+      "events": {
+        "0x42fb8796ffe3237a1f58f3e03a85a890f71c1582e5ef97e78936c4f5b6968cd9": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "name": "_from",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "name": "_toA",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "name": "_toB",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "name": "_value",
+              "type": "uint256"
+            },
+            {
+              "indexed": false,
+              "name": "_valueSplit",
+              "type": "uint256"
+            }
+          ],
+          "name": "Split",
+          "type": "event"
+        }
+      },
+      "links": {},
+      "address": "0x4ab2fba06dcd48e4365fbbebafb3f56ff751cb0f",
+      "updated_at": 1509311945328
+    },
+    "1509313315181": {
+      "events": {
+        "0x42fb8796ffe3237a1f58f3e03a85a890f71c1582e5ef97e78936c4f5b6968cd9": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "name": "_from",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "name": "_toA",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "name": "_toB",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "name": "_value",
+              "type": "uint256"
+            },
+            {
+              "indexed": false,
+              "name": "_valueSplit",
+              "type": "uint256"
+            }
+          ],
+          "name": "Split",
+          "type": "event"
+        }
+      },
+      "links": {},
+      "address": "0x1e15b42e2a41e480ca1c67eb18470a460baacfc0",
+      "updated_at": 1509314534206
+    },
+    "1509317855414": {
+      "events": {
+        "0x42fb8796ffe3237a1f58f3e03a85a890f71c1582e5ef97e78936c4f5b6968cd9": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "name": "_from",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "name": "_toA",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "name": "_toB",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "name": "_value",
+              "type": "uint256"
+            },
+            {
+              "indexed": false,
+              "name": "_valueSplit",
+              "type": "uint256"
+            }
+          ],
+          "name": "Split",
+          "type": "event"
+        }
+      },
+      "links": {},
+      "address": "0x14b1dd73467b9094ab172e9f317bae3f8dda2237",
+      "updated_at": 1509317869462
+    },
+    "1509318432148": {
+      "events": {
+        "0x42fb8796ffe3237a1f58f3e03a85a890f71c1582e5ef97e78936c4f5b6968cd9": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "name": "_from",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "name": "_toA",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "name": "_toB",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "name": "_value",
+              "type": "uint256"
+            },
+            {
+              "indexed": false,
+              "name": "_valueSplit",
+              "type": "uint256"
+            }
+          ],
+          "name": "Split",
+          "type": "event"
+        }
+      },
+      "links": {},
+      "address": "0xb4236580e3720b19b8a68a742d99da1a471a1eb9",
+      "updated_at": 1509318490958
+    }
+  },
+  "schema_version": "0.0.5",
+  "updated_at": 1509318490958
+}
