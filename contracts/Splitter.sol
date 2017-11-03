@@ -8,52 +8,46 @@ contract Splitter {
 	address public owner;
 	address public splitToAddressA;
 	address public splitToAddressB;
-	mapping (address => uint) amountPendingToWithdraw;
+	mapping (address => uint) balances;
 
-	event Split(address indexed _from, address indexed _toA, address indexed _toB, uint256 _value, uint256 _valueSplit);
-	event Withdraw(address indexed _from, uint256 _valueWithdraw);
+	event LogSplit(address indexed from, address indexed toA, address indexed toB, uint256 value, uint256 valueSplit);
+	event LogWithdraw(address indexed from, uint256 valueWithdraw);
 
-	function Splitter( address _splitToAddressA, address _splitToAddressB) {
+	function Splitter( address _splitToAddressA, address _splitToAddressB) public {
 		owner = msg.sender;
 		splitToAddressA = _splitToAddressA;
 		splitToAddressB = _splitToAddressB;
-		amountPendingToWithdraw[splitToAddressA] = 0;
-		amountPendingToWithdraw[splitToAddressB] = 0;
 	}
 
-	function split() payable returns (bool splitIndeed) {
+	function split() payable public returns (bool splitIndeed) {
 		require(msg.sender == owner);
         require(msg.value != 0);
-		uint amountToSplit = (msg.value - msg.value%2) / 2;
+		require(msg.value%2 == 0);
+		uint amountToSplit = msg.value / 2;
 
-		amountPendingToWithdraw[splitToAddressA]+=amountToSplit;
-		amountPendingToWithdraw[splitToAddressB]+=amountToSplit;
+		balances[splitToAddressA] += amountToSplit;
+		balances[splitToAddressB] += amountToSplit;
 
-		Split(msg.sender, splitToAddressA, splitToAddressB, msg.value, amountToSplit);
+		LogSplit(msg.sender, splitToAddressA, splitToAddressB, msg.value, amountToSplit);
 		return true;
 	}
 
-	function withdrawFunds() returns (bool success){
+	function withdrawFunds() public returns (bool success) {
 
-		require( msg.sender == splitToAddressA || msg.sender == splitToAddressB );
-		require( amountPendingToWithdraw[msg.sender] > 0 );
-		uint availableFunds = amountPendingToWithdraw[msg.sender];
-		amountPendingToWithdraw[msg.sender] = 0;
-		msg.sender.transfer(availableFunds);
+		require(balances[msg.sender] > 0);
+		uint balance = balances[msg.sender];
+		balances[msg.sender] = 0;
+		if (!msg.sender.send(balance)) throw;
 
-		Withdraw(msg.sender, availableFunds);
+		LogWithdraw(msg.sender, balance);
 
 		return true;
 
 	}
 
-	function getAvailableFunds(address account) returns (uint availableFunds){
-
-		require((msg.sender == splitToAddressA && account == splitToAddressA) ||
-				 (msg.sender == splitToAddressB  && account == splitToAddressB) || 
-				 msg.sender == owner);
-		
-		return amountPendingToWithdraw[msg.sender];
+	function getBalanceOf(address account) public constant returns (uint balance) {
+	
+		return balances[account];
 
 	}
 
