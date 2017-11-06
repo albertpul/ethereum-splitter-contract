@@ -4,22 +4,24 @@ pragma solidity ^0.4.4;
 // 			It allows splitting ether sent from the owner between other two contracts
 // @author: Alberto Pulido
 
-contract Splitter {
-	address public owner;
+import "./Owned.sol";
+
+contract Splitter is Owned {
+
 	address public splitToAddressA;
 	address public splitToAddressB;
-	mapping (address => uint) balances;
+	mapping (address => uint) public balances;
+	
 
 	event LogSplit(address indexed from, address indexed toA, address indexed toB, uint256 value, uint256 valueSplit);
 	event LogWithdraw(address indexed from, uint256 valueWithdraw);
 
 	function Splitter( address _splitToAddressA, address _splitToAddressB) public {
-		owner = msg.sender;
 		splitToAddressA = _splitToAddressA;
 		splitToAddressB = _splitToAddressB;
 	}
 
-	function split() payable public returns (bool splitIndeed) {
+	function split() payable public onlyOwner returns (bool splitIndeed) {
 		require(msg.sender == owner);
         require(msg.value != 0);
 		require(msg.value%2 == 0);

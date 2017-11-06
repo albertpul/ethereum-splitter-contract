@@ -90,6 +90,5 @@ contract('Contract', function(accounts) {
       assert.strictEqual(_balance.toNumber(), 0, "Withdraw not removing all pending balance for Account B");
    });
   });
-
    
 });
